@@ -1,23 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from "react";
 
 function App() {
+
+  const [height, setheight] = useState();
+  const [weight, setweight] = useState();
+  const [bmi, setbmi] = useState(0);
+  
+  useEffect(() => {
+    setbmi(weight / (height * height));
+  }, [height, weight]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <form action="" className="">
+          <label htmlFor="">
+            enter weight:
+            <input
+              type="text"
+              className=""
+              placeholder="enter weight"
+              value={weight}
+              onChange={(e) => setweight(e.target.value)}
+            />
+          </label>
+          <br />
+          <label htmlFor="">
+            enter height:
+            <input
+              type="text"
+              className=""
+              placeholder="enter height"
+              value={height}
+              onChange={(e) => setheight(e.target.value)}
+            />
+          </label>
+
+          <div className="">bmi :  {bmi}</div>
+        </form>
     </div>
   );
 }
